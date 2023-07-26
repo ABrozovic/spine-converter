@@ -70,6 +70,7 @@ const useSpine = (): UseSpine => {
       });
 
       appRef.current.stage.interactive = true;
+      appRef.current.stage.eventMode = "dynamic";
       appRef.current.stage.hitArea = appRef.current.screen;
     }
   }, []);
@@ -135,6 +136,7 @@ const useSpine = (): UseSpine => {
       if (!canvasRef || !appRef.current) return;
       const setSpineInstance = (spine: Spine) => {
         appRef.current?.stage.addChild(spine);
+        spine.eventMode = "dynamic";
         spine.interactive = true;
         spine.cursor = "pointer";
         spine.on("pointerdown", onPointerDown, spine);

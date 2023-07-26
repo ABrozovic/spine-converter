@@ -3,7 +3,7 @@ import { SpineBase } from "@pixi-spine/base";
 import { AnimationState } from "./core/AnimationState";
 import { AnimationStateData } from "./core/AnimationStateData";
 import { Skeleton } from "./core/Skeleton";
-import { SkeletonData } from "./core/SkeletonData";
+import type { SkeletonData } from "./core/SkeletonData";
 
 /**
  * @public

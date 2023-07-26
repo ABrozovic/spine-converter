@@ -7,7 +7,7 @@ import {
   TransformMode,
   Utils,
 } from "@pixi-spine/base";
-import { BLEND_MODES } from "@pixi/constants";
+import { BLEND_MODES } from "@pixi/core";
 
 import {
   Animation,
