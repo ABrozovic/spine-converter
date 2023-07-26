@@ -2,6 +2,7 @@ import { z, type ZodType } from "zod";
 
 import type { CommonMimeType } from "@/lib/mime-types";
 import { verifyMimeType, verifySize } from "@/lib/schema-utils";
+import { zodFileValidation } from "@/lib/utils";
 import { type FileWithId } from "@/hooks/use-file-input";
 
 const LIMIT_TO_30MB = 1000000 * 30;
@@ -14,9 +15,7 @@ export const imageSchema: ZodType<FileWithId[]> = z
   .array(
     z.object({
       id: z.string(),
-      file: z.instanceof(File).refine((file) => file instanceof File, {
-        message: "Expected a File object.",
-      }),
+      file: zodFileValidation,
     })
   )
   .max(maxNumberOfFiles, {
