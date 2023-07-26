@@ -7,9 +7,7 @@ const config = {
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
-  },
-
-  compress: false,
+  },  
   webpack(webpackConfig) {
     return {
       ...webpackConfig,
