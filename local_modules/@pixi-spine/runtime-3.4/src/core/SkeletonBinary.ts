@@ -7,7 +7,7 @@ import {
   TransformMode,
   Utils,
 } from "@pixi-spine/base";
-import { BLEND_MODES } from "@pixi/constants";
+import { BLEND_MODES } from "@pixi/core";
 
 import {
   Animation,
@@ -27,7 +27,6 @@ import {
   Timeline,
   TransformConstraintTimeline,
   TranslateTimeline,
-  TwoColorTimeline,
 } from "./Animation";
 import type {
   Attachment,
@@ -50,10 +49,10 @@ import { TransformConstraintData } from "./TransformConstraintData";
  */
 export class SkeletonBinary {
   static AttachmentTypeValues = [
-    0 /*AttachmentType.Region*/, 1 /*AttachmentType.BoundingBox*/,
-    2 /*AttachmentType.Mesh*/, 3 /*AttachmentType.LinkedMesh*/,
-    4 /*AttachmentType.Path*/, 5 /*AttachmentType.Point*/,
-    6 /*AttachmentType.Clipping*/,
+    0 /* AttachmentType.Region*/, 1 /* AttachmentType.BoundingBox*/,
+    2 /* AttachmentType.Mesh*/, 3 /* AttachmentType.LinkedMesh*/,
+    4 /* AttachmentType.Path*/, 5 /* AttachmentType.Point*/,
+    6 /* AttachmentType.Clipping*/,
   ];
   static TransformModeValues = [
     TransformMode.Normal,

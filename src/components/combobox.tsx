@@ -54,7 +54,7 @@ const ComboBox = ({
   const [popoverWidth, setPopoverWidth] = React.useState<string>("200px");
 
   React.useEffect(() => {
-    if (!data || selectedValue || !defaultToFirst) return;
+    if (!data?.[0]?.value || selectedValue || !defaultToFirst) return;
     setSelectedValue(data[0].value);
     onChange(data[0]);
   }, [data, defaultToFirst, onChange, selectedValue]);

@@ -13,12 +13,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
-    "@pixi-spine/base": "./local_modules/@pixi-spine/base/src",
     "@pixi-spine/runtime-3.4": "./local_modules/@pixi-spine/runtime-3.4/src",
-    "@pixi-spine/runtime-3.7": "./local_modules/@pixi-spine/runtime-3.7/src",
-    "@pixi-spine/runtime-3.8": "./local_modules/@pixi-spine/runtime-3.8/src",
-    "@pixi-spine/runtime-4.0": "./local_modules/@pixi-spine/runtime-4.0/src",
-    "@pixi-spine/runtime-4.1": "./local_modules/@pixi-spine/runtime-4.1/src",
     "@radix-ui/react-dialog": "^1.0.4",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-popover": "^1.0.6",
@@ -26,34 +21,29 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.4",
     "@tanstack/react-query": "^4.32.0",
-    "@use-gesture/react": "^10.2.27",    
+    "@use-gesture/react": "^10.2.27",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
     "lucide-react": "^0.263.0",
-    "math:^6.0.0": "link:@pixi/math:^6.0.0",
     "next": "13.4.12",
-    "pixi-spine": "^3.1.2",
-    "pixi.js": "^6.0.0",
+    "pixi-spine": "^4.0.0",
+    "pixi.js": "^7.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
     "tailwind-merge": "^1.14.0",
     "zod": "^3.21.4"
   },
-  "peerDependencies": {
-    "@pixi/constants": "^6.1.0",
-    "@pixi/core": "^6.1.0",
-    "@pixi/display": "^6.1.0",
-    "@pixi/graphics": "^6.1.0",
-    "@pixi/math": "^6.1.0",
-    "@pixi/mesh": "^6.1.0",
-    "@pixi/mesh-extras": "^6.1.0",
-    "@pixi/sprite": "^6.1.0",
-    "@pixi/utils": "^6.1.0"
-  },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "@pixi-spine/base": "^4.0.3",
+    "@pixi/core": "^7.2.4",
+    "@pixi/display": "^7.2.4",
+    "@pixi/graphics": "^7.2.4",
+    "@pixi/mesh": "^7.2.4",
+    "@pixi/mesh-extras": "^7.2.4",
+    "@pixi/sprite": "^7.2.4",
     "@tanstack/react-query-devtools": "^4.32.0",
     "@types/eslint": "^8.44.0",
     "@types/node": "20.4.4",
@@ -73,5 +63,14 @@
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6"
+  },
+  "peerDependencies": {
+    "@pixi-spine/base": "^4.0.3",
+    "@pixi/core": "^7.2.4",
+    "@pixi/display": "^7.2.4",
+    "@pixi/graphics": "^7.2.4",
+    "@pixi/mesh": "^7.2.4",
+    "@pixi/mesh-extras": "^7.2.4",
+    "@pixi/sprite": "^7.2.4"
   }
 }

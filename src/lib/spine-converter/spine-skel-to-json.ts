@@ -24,6 +24,7 @@ import {
   type IIkConstraintData,
   type IPathConstraintData,
   type ISkin,
+  type ITimeline,
   type ITransformConstraintData,
   type Spine,
 } from "pixi-spine";
@@ -405,22 +406,27 @@ export class SkelToJson {
     this.spine.skeleton.data.animations.forEach((animation) => {
       this.animData.addAnimation(animation.name);
       animation.timelines.forEach((timeline) => {
-        const timelineConstructorName = timeline.constructor.name;
+        const timelineConstructorName =
+          (timeline as ITimeline & { type: string }).type ??
+          timeline.constructor.name;
+
         if (
-          ["_ColorTimeline", "ColorTimeline"].includes(timelineConstructorName)
+          ["_ColorTimeline", "ColorTimeline"].some((item) =>
+            timelineConstructorName.includes(item)
+          )
         ) {
           this.handleSlotColorKeyframe(timeline as ColorTimeline);
         }
         if (
-          ["AttachmentTimeline", "_AttachmentTimeline"].includes(
-            timelineConstructorName
+          ["AttachmentTimeline", "_AttachmentTimeline"].some((item) =>
+            timelineConstructorName.includes(item)
           )
         ) {
           this.handleSlotAttachmentKeyframe(timeline as AttachmentTimeline);
         }
         if (
-          ["_RotateTimeline", "RotateTimeline"].includes(
-            timelineConstructorName
+          ["_RotateTimeline", "RotateTimeline"].some((item) =>
+            timelineConstructorName.includes(item)
           )
         ) {
           this.handleRotateTimeline(timeline as RotateTimeline);
@@ -433,7 +439,7 @@ export class SkelToJson {
             "ScaleTimeline",
             "_ShearTimeline",
             "ShearTimeline",
-          ].includes(timelineConstructorName)
+          ].some((item) => timelineConstructorName.includes(item))
         ) {
           this.handleTranslateScaleShearTimeline(
             timeline as TranslateTimeline,
@@ -441,25 +447,24 @@ export class SkelToJson {
           );
         }
         if (
-          ["_IkConstraintTimeline", "IkConstraintTimeline"].includes(
-            timelineConstructorName
+          ["_IkConstraintTimeline", "IkConstraintTimeline"].some((item) =>
+            timelineConstructorName.includes(item)
           )
         ) {
           this.handleIkContraintTimeline(timeline as IkConstraintTimeline);
         }
         if (
-          [
-            "_TransformConstraintTimeline",
-            "TransformConstraintTimeline",
-          ].includes(timelineConstructorName)
+          ["_TransformConstraintTimeline", "TransformConstraintTimeline"].some(
+            (item) => timelineConstructorName.includes(item)
+          )
         ) {
           this.handleTransformConstraintTimeline(
             timeline as TransformConstraintTimeline
           );
         }
         if (
-          ["_PathConstraintMixTimeline", "PathConstraintMixTimeline"].includes(
-            timelineConstructorName
+          ["_PathConstraintMixTimeline", "PathConstraintMixTimeline"].some(
+            (item) => timelineConstructorName.includes(item)
           )
         ) {
           this.handlePathConstraintMixTimeline(
@@ -467,8 +472,8 @@ export class SkelToJson {
           );
         }
         if (
-          ["_DeformTimeline", "DeformTimeline"].includes(
-            timelineConstructorName
+          ["_DeformTimeline", "DeformTimeline"].some((item) =>
+            timelineConstructorName.includes(item)
           )
         ) {
           this.handleDeformTimeline(timeline as DeformTimeline);
@@ -652,8 +657,8 @@ export class SkelToJson {
     timelineConstructorName: string
   ) {
     if (
-      ["_TranslateTimeline", "TranslateTimeline"].includes(
-        timelineConstructorName
+      ["_TranslateTimeline", "TranslateTimeline"].some((item) =>
+        timelineConstructorName.includes(item)
       )
     ) {
       this.animData.addBoneTranslateTimeline(
@@ -663,7 +668,11 @@ export class SkelToJson {
         )
       );
     }
-    if (["_ShearTimeline", "ShearTimeline"].includes(timelineConstructorName)) {
+    if (
+      ["_ShearTimeline", "ShearTimeline"].some((item) =>
+        timelineConstructorName.includes(item)
+      )
+    ) {
       this.animData.addBoneShearTimeline(
         this.spine.skeleton.data.bones[timeline.boneIndex]?.name,
         (timeline as ShearTimeline).data.map((data) =>
@@ -672,7 +681,9 @@ export class SkelToJson {
       );
     }
     if (
-      ["_ScaleTimeline" || "ScaleTimeline"].includes(timelineConstructorName)
+      ["_ScaleTimeline" || "ScaleTimeline"].some((item) =>
+        timelineConstructorName.includes(item)
+      )
     ) {
       this.animData.addBoneScaleTimeline(
         this.spine.skeleton.data.bones[timeline.boneIndex]?.name,
