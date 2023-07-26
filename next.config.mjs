@@ -8,6 +8,16 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+
+  compress: false,
+  webpack(webpackConfig) {
+    return {
+      ...webpackConfig,
+      optimization: {
+        minimize: false,
+      },
+    };
+  },
 };
 
 export default config;
